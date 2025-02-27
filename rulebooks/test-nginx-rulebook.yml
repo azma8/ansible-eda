@@ -10,7 +10,7 @@
     - name: nginx is down
       condition:
         all:
-          - event.payload.target == "nginx"
+          - event.payload.event_name == "Nginx:"
           - event.payload.event_severity == "Average"
       action:
         run_job_template:
