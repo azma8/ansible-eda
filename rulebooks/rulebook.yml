@@ -9,4 +9,6 @@
     - name: nginx is down
       condition: event.payload.trigger_name == "Nginx: Service is down"
       action:
-        debug:
+        run_job_template:
+          name: "Running nginx"
+          organization: "Default"
