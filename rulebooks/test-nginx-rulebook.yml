@@ -8,6 +8,11 @@
         
   rules:
     - name: nginx is down
-      condition: event.payload.trigger_name == "Nginx: Service is down"
+      condition:
+        all:
+          - event.payload.target == "nginx"
+          - event.payload.event_severity == "Average"
       action:
-        debug:
+        run_job_template:
+          name: Running_nginx
+          organization: Default
